@@ -11,6 +11,7 @@ import android.location.LocationManager
 import android.os.Binder
 import androidx.annotation.CheckResult
 import com.google.android.gms.location.LocationRequest
+import app.grapheneos.gmscompat.Const
 
 class Client(val gls: GLocationService, unverifiedPackageName: String? = null, val attributionTag: String? = null, val appOpsReasonMessage: String? = null) {
     val uid = Binder.getCallingUid()
@@ -93,16 +94,28 @@ class Client(val gls: GLocationService, unverifiedPackageName: String? = null, v
 
     @CheckResult
     fun noteProxyAppOp(): Int {
-        return gls.appOpsManager.noteProxyOpNoThrow(permission.appOp(), packageName, uid, attributionTag, appOpsReasonMessage)
+        if (Const.PRIVILEGED_APP_OPS) {
+            return gls.appOpsManager.noteOpNoThrow(permission.appOp(), uid, packageName, attributionTag, appOpsReasonMessage)
+        } else {
+            return gls.appOpsManager.noteProxyOpNoThrow(permission.appOp(), packageName, uid, attributionTag, appOpsReasonMessage)
+        }
     }
 
     @CheckResult
     fun startMonitorAppOp(): Int {
-        return gls.appOpsManager.startProxyOpNoThrow(permission.monitorAppOp(), uid, packageName, attributionTag, appOpsReasonMessage)
+        if (Const.PRIVILEGED_APP_OPS) {
+            return gls.appOpsManager.startOpNoThrow(permission.monitorAppOp(), uid, packageName, attributionTag, appOpsReasonMessage)
+        } else {
+            return gls.appOpsManager.startProxyOpNoThrow(permission.monitorAppOp(), uid, packageName, attributionTag, appOpsReasonMessage)
+        }
     }
 
     fun finishMonitorAppOp() {
-        gls.appOpsManager.finishProxyOp(permission.monitorAppOp(), uid, packageName, attributionTag)
+        if (Const.PRIVILEGED_APP_OPS) {
+            gls.appOpsManager.finishOp(permission.monitorAppOp(), uid, packageName, attributionTag)
+        } else {
+            gls.appOpsManager.finishProxyOp(permission.monitorAppOp(), uid, packageName, attributionTag)
+        }
     }
 }
 

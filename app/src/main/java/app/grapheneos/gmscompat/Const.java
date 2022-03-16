@@ -4,6 +4,8 @@ public interface Const {
 //    boolean DEV = BuildConfig.DEV;
     boolean DEV = false;
 
+    boolean PRIVILEGED_APP_OPS = true;
+
     String PKG_NAME = "app.grapheneos.gmscompat";
 
     String GSF_PKG = "com.google.android.gsf";

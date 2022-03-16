@@ -16,11 +16,20 @@ android_app {
     ],
     manifest: "app/src/main/AndroidManifest.xml",
 
-    sdk_version: "current",
+    platform_apis: true,
+    privileged: true,
 
     required: [
+        "permissions_app.grapheneos.gmscompat.xml",
         "whitelist_app.grapheneos.gmscompat.xml",
     ]
+}
+
+prebuilt_etc {
+    name: "permissions_app.grapheneos.gmscompat.xml",
+    sub_dir: "permissions",
+    src: "permissions_app.grapheneos.gmscompat.xml",
+    filename_from_src: true,
 }
 
 prebuilt_etc {
