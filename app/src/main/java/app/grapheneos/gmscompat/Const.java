@@ -5,6 +5,7 @@ public interface Const {
     boolean DEV = false;
 
     boolean PRIVILEGED_APP_OPS = true;
+    boolean USE_PRIVILEGED_WorkSource_API = true;
 
     String PKG_NAME = "app.grapheneos.gmscompat";
 

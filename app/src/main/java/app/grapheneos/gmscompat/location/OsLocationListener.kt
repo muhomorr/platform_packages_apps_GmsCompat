@@ -5,6 +5,7 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.SystemClock
+import android.os.WorkSource
 import com.google.android.gms.location.LocationAvailability
 import com.google.android.gms.location.LocationRequest
 
@@ -16,7 +17,7 @@ import java.util.Collections
 import java.util.concurrent.CountDownLatch
 import kotlin.math.max
 
-fun LocationRequest.toOsLocationRequest(): android.location.LocationRequest {
+fun LocationRequest.toOsLocationRequest(client: Client): android.location.LocationRequest {
     val interval =
     if (priority == LocationRequest.PRIORITY_NO_POWER) {
         android.location.LocationRequest.PASSIVE_INTERVAL
@@ -33,6 +34,10 @@ fun LocationRequest.toOsLocationRequest(): android.location.LocationRequest {
     b.setMaxUpdates(numUpdates)
     b.setMinUpdateDistanceMeters(smallestDesplacement)
     b.setMaxUpdateDelayMillis(maxWaitTime)
+    if (Const.USE_PRIVILEGED_WorkSource_API) {
+        val ws = WorkSource(client.uid, client.packageName)
+        b.setWorkSource(ws)
+    }
     return b.build()
 }
 

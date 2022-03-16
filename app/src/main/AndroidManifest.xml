@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <!-- needed to make system_service trust attribution of AppOps to clients-->
     <uses-permission android:name="android.permission.UPDATE_APP_OPS_STATS" />
+    <!-- needed to blame location service clients for their power use via WorkSource APIs-->
+    <uses-permission android:name="android.permission.UPDATE_DEVICE_STATS" />
 
     <permission
         android:name="app.grapheneos.gmscompat.SHOW_UI"

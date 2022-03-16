@@ -2,5 +2,6 @@
 <permissions>
     <privapp-permissions package="app.grapheneos.gmscompat">
         <permission name="android.permission.UPDATE_APP_OPS_STATS" />
+        <permission name="android.permission.UPDATE_DEVICE_STATS" />
     </privapp-permissions>
 </permissions>

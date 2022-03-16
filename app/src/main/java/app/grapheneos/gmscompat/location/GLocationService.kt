@@ -91,7 +91,7 @@ object GLocationService : IGoogleLocationManagerService.Stub() {
             glf.listeners = listeners
 
             val req: LocationRequest = data.request.request
-            val oll = OsLocationListener(client, client.getProvider(req), req.toOsLocationRequest(), glf)
+            val oll = OsLocationListener(client, client.getProvider(req), req.toOsLocationRequest(client), glf)
             listeners.update(client, key, oll)
         } else {
             require(data.opCode == LocationRequestUpdateData.OP_REMOVE_UPDATES)
