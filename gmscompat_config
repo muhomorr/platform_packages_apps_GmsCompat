@@ -129,9 +129,10 @@ setCurrentFunctions void
 
 [android.location.LocationManager]
 getLastKnownLocation null
+registerGnssMeasurementsCallback false
+registerGnssStatusCallback false
 setExtraLocationControllerPackage void
 setExtraLocationControllerPackageEnabled void
-registerGnssStatusCallback false
 
 [android.media.AudioManager]
 muteAwaitConnection void
