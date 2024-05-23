@@ -54,9 +54,11 @@ android {
                 signingConfig = signingConfigs.getByName("release")
             }
         }
-        getByName("debug") {
-            isMinifyEnabled = true
+
+        create("dev") {
+            initWith(getByName("release"))
             applicationIdSuffix = ".dev"
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
 }
