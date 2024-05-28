@@ -116,6 +116,9 @@ getMetadata default
 setMetadata default
 setSilenceMode default
 
+[android.bluetooth.BluetoothManager]
+openGattServer default
+
 [android.content.ContentResolver]
 registerContentObserver void
 
