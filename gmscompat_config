@@ -211,6 +211,9 @@ getVoiceMailNumber nullString
 [1000]
 242199999 84129999
 
+[1008]
+242199999 84129999
+
 [[stubs_12.1]]
 
 [android.bluetooth.BluetoothDevice]
