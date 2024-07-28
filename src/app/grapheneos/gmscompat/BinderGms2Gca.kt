@@ -32,6 +32,7 @@ import com.android.internal.gmscompat.GmsInfo.PACKAGE_PLAY_STORE
 import com.android.internal.gmscompat.IGca2Gms
 import com.android.internal.gmscompat.IGms2Gca
 import com.android.internal.gmscompat.dynamite.server.IFileProxyService
+import java.util.concurrent.CountDownLatch
 import java.util.concurrent.SynchronousQueue
 import java.util.concurrent.TimeUnit
 import java.util.function.Consumer
@@ -385,13 +386,16 @@ object BinderGms2Gca : IGms2Gca.Stub() {
         val TAG = "requestConfigUpdate"
         Log.d(TAG, "reason: $reason")
 
-        val sq = SynchronousQueue<Boolean>()
-        requestConfigUpdate { configUpdated ->
-            sq.put(configUpdated)
+        val latch = CountDownLatch(1)
+        requestConfigUpdate { _ ->
+            latch.countDown()
         }
-        // block until request completes
-        val configUpdated = sq.take()
-        Log.d(TAG, "configUpdated: $configUpdated")
+
+        try {
+            latch.await(15, TimeUnit.SECONDS)
+        } catch (e: InterruptedException) {
+            Log.d(TAG, "timeout", e)
+        }
 
         // Config update (if it happened) will be broadcast to all bound GMS apps,
         // but that may happen after return of this method, there's no ordering guarantee.
