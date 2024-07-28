@@ -423,6 +423,7 @@ object BinderGms2Gca : IGms2Gca.Stub() {
         try {
             cr.call(authority, method, pkgName, extras)
         } catch (e: Exception) {
+            handler.obtainMessage().sendToTarget() // Message.arg1 is 0 by default
             Log.d("requestConfigUpdate", "unable to call " + authority, e)
         }
     }
