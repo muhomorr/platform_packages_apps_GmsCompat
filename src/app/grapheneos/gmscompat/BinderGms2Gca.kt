@@ -350,7 +350,7 @@ object BinderGms2Gca : IGms2Gca.Stub() {
 
         if (checkForConfigUpdate) {
             requestConfigUpdate{ configUpdated ->
-                Log.d(TAG, "callback from Apps: configUpdated: $configUpdated")
+                Log.d(TAG, "callback from AppStore: configUpdated: $configUpdated")
                 if (configUpdated && showNotification) {
                     Log.d(TAG, "suppressed notification for crash that happened when config was out-of-date")
                     return@requestConfigUpdate
@@ -361,7 +361,7 @@ object BinderGms2Gca : IGms2Gca.Stub() {
             }
 
             if (showNotification) {
-                Log.d(TAG, "delaying notification until callback from Apps")
+                Log.d(TAG, "delaying notification until callback from AppStore")
                 return
             }
         }
