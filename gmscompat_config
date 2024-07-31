@@ -119,6 +119,9 @@ setSilenceMode default
 [android.bluetooth.BluetoothManager]
 openGattServer default
 
+[android.bluetooth.le.BluetoothLeAdvertiser]
+startAdvertisingSet default
+
 [android.content.ContentResolver]
 registerContentObserver void
 
