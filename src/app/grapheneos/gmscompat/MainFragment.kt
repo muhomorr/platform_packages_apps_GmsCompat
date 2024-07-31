@@ -65,7 +65,7 @@ class MainFragment : PreferenceFragmentCompat() {
             screen.addPref().apply {
                 setTitle(R.string.android_auto)
                 intent = Intent().apply {
-                    component = ComponentName(KnownSystemPackages.PERMISSION_CONTROLLER,
+                    component = ComponentName(KnownSystemPackages.get(ctx).permissionController,
                         "com.android.permissioncontroller.ext.aauto.AndroidAutoConfigActivity")
                 }
             }
