@@ -214,10 +214,10 @@ getVoiceMailNumber nullString
 # section name is gmscompat version, section contents are max supported versions of GmsCore and Play Store
 [1000]
 # GmsCore 24.22 requires GmsCompat 1008
-242199999 84209999
+242199999 84219999
 
 [1008]
-242899999 84209999
+242899999 84219999
 
 [[stubs_12.1]]
 
