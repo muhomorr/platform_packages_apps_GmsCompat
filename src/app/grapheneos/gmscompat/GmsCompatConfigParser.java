@@ -622,8 +622,8 @@ public class GmsCompatConfigParser {
                 stubCheck(signature, returnType.isArray()
                     && (
                         Parcelable.class.isAssignableFrom(returnType.getComponentType())
-                        ||
-                        returnType.getComponentType().isPrimitive()
+                        || returnType.getComponentType() == String.class
+                        || returnType.getComponentType().isPrimitive()
                     )
                 );
                 break;
