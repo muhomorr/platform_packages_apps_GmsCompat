@@ -210,6 +210,9 @@ unregisterTelephonyCallback void
 getServiceState null
 getVoiceMailNumber nullString
 
+[com.android.internal.gmscompat.sysservice.GmcPackageManager]
+getPackagesForUid nullArray
+
 [[versionMap]]
 # section name is gmscompat version, section contents are max supported versions of GmsCore and Play Store
 [1000]
