@@ -250,6 +250,10 @@ sendBroadcastAsUser int 0
 [com.google.android.gms]
 # causes chain crashes on Pixel Tablet due to the missing Dock Manager app
 disable com.google.android.gms.homegraph.PersistentListenerService
+disable com.google.android.gms.update.SystemUpdateGcmTaskService
+disable com.google.android.gms.update.SystemUpdatePersistentListenerService
+disable com.google.android.gms.update.SystemUpdateService
+disable com.google.android.gms.update.UpdateJobService
 
 [[spoof_self_permission_checks_v2]]
 
