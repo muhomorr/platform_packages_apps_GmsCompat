@@ -43,6 +43,7 @@ enable_telecom_feature false
 
 [com.google.android.gms.update]
 # OS update service
+# This flag is replaced with the gservices update_service_enabled flag since GmsCore 24.31
 service_enabled false
 
 [com.google.android.westworld]
@@ -73,6 +74,8 @@ GcmFeature__use_prioritized_alarm_api false
 # make sure PhenotypeFlags are overridable by Gservices flags. Overriding Play Store (finsky) PhenotypeFlags
 # directly is much more complex than overriding Gservices flags.
 finsky.kill_switch_phenotype_gservices_check set-string 0
+# disable GmsCore OS update service
+update_service_enabled set-string 0
 
 [[stubs]]
 
