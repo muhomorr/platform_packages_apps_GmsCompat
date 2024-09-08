@@ -117,6 +117,7 @@ unregisterBluetoothConnectionCallback default
 getIdentityAddress default
 getMetadata default
 setMetadata default
+setPairingConfirmation default
 setSilenceMode default
 
 [android.bluetooth.BluetoothManager]
